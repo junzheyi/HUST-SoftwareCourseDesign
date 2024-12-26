@@ -1,0 +1,14 @@
+{
+  "name": "code-softwarecoursedesign",
+  "version": "1.0.0",
+  "description": "这是大三上学期的软件课设项目所用的仓库\r # 选题内容：\r ## 项目名称\r AI智能客服机器人系统设计与开发\r ## 项目描述\r 设计一个B/S系统，实现选择特定画像人物，根据所输入的问题，系统自动结合知识库给出精准的回答内容。\r 1. 用户输入： 用户提供输入（例如问题或查询）。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}

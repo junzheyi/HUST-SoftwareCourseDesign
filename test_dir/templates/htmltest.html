@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <meta charset="utf-8">
+    <title>RAG Demo</title>
+
+</head>
+
+<body class="bg-body-tertiary">
+
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <h2>简陋的测试</h2>
+                <p class="lead">救救软件课设</p>
+            </div>
+
+            <div class="row mb-3">
+                <h4 class="mb-3">请输入您的问题</h4>
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <label for="question" class="form-label">问题内容</label>
+                            <input type="text" class="form-control" id="question" required
+                                value="How is data stored in milvus?">
+                        </div>
+                    </div>
+
+                    <button id="submit" class="w-100 btn btn-primary btn-lg" type="button">提问</button>
+                </form>
+            </div>
+            <div class="row mb-3">
+                <h4 class="mb-3">Prompt</h4>
+                <textarea id="prompt" rows="10" style="margin-left: 10px;margin-right: 10px;">请先提问</textarea>
+            </div>
+            <div class="row mb-3">
+                <h4 class="mb-3">回复</h4>
+                <div id="response">请先提问</div>
+            </div>
+        </main>
+
+        <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+            <p class="mb-1">&copy; 2024 易俊哲</p>
+        </footer>
+    </div>
+
+    <script>
+        $('#submit').click(function () {
+            $.post('/', { "question": $('#question').val() }, function (data) {
+                $('#prompt').val(data.prompt)
+                $('#response').html(data.ai_answer)
+            }, 'json')
+        });
+    </script>
+
+</html>
