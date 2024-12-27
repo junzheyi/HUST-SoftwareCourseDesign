@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2024/12/27 14:07
 # @Author  : Junzhe Yi
-# @File    : ask_question_online.py
+# @File    : ask_questions_online.py
 # @Software: PyCharm
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Milvus
