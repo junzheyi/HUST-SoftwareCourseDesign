@@ -4,6 +4,8 @@
 # @File    : create_collection_and_index.py
 # @Software: PyCharm
 
+# this script is used to create collections and indexes in Milvus, you need to make sure
+# - the config file has been set successfully.
 from libs import (connect_to_milvus,
                   create_milvus_collection,
                   create_milvus_collection_v2,
