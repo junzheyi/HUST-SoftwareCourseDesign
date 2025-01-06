@@ -217,6 +217,17 @@ def main_page():
         index=None,
         placeholder="Select your LLM..."
     )
+    st.title(f"Welcome, {st.session_state.username}!")
+
+    # Store LLM generated responses
+    if "messages" not in st.session_state.keys():
+        st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+
+    # Display chat messages
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.write(message["content"])
+
     # prompt = st.text_area(r"$\textsf{\large Ask LawBot a question:}$")
     if prompt := st.chat_input("please type your question here..."):
         st.session_state.messages.append({"role": "user", "content": prompt})
