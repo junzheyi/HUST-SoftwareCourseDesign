@@ -86,6 +86,6 @@ if __name__ == '__main__':
         print(f'Source Text: {doc.page_content}')
         print("\033[38;5;208m*******************************\033[0;0m")
     print('=' * 50)
-    end_time = timeit.default_timer()  # End timer
+    end_time = timeit.default_timer()
     total_time = (end_time - start_time) / 60
     print("Time to retrieve response %.2f(minute(s)):" % total_time)
