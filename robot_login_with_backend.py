@@ -251,10 +251,10 @@ def main_page():
             end_time = timeit.default_timer()  # End timer
             total_time = (end_time - start_time) / 60
             st.markdown("Time to retrieve response %.2f minutes" % total_time)
-        source_docs = response['source_documents']
-        for i, doc in enumerate(source_docs):
-            st.info(f'\nSource Document {i + 1}\n')
-            st.info(f'Source Text: {doc.page_content}')
+            source_docs = response['source_documents']
+            for i, doc in enumerate(source_docs):
+                st.markdown(f'\nSource Document {i + 1}\n')
+                st.markdown(f'Source Text: {doc.page_content}')
     def clear_chat_history():
         st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
 
