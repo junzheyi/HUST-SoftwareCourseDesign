@@ -234,7 +234,7 @@ def main_page():
         with st.chat_message("user"):
             st.write(prompt)
     # if st.button("Ask LawBot", type="primary"):
-    if prompt:
+    # if prompt:
         # st.write(prompt)
         start_time = timeit.default_timer()  # Start timer
         with st.spinner("LawBot is searching.."):
@@ -246,15 +246,69 @@ def main_page():
                 response = ask_question_zephyr(prompt)
             else:
                 response = ask_question(prompt)
-        with st.chat_message("assistant"):
+        #     placeholder = st.empty()
+        #     full_response = ''
+        #     # for item in response:
+        #     full_response += response["result"]
+        #     #     placeholder.markdown(full_response)
+        #     # placeholder.markdown(full_response)
+        # message = {"role": "assistant", "content": full_response}
+        # st.session_state.messages.append(message)
+
+        with (st.chat_message("assistant")):
             st.markdown(response["result"])
             end_time = timeit.default_timer()  # End timer
             total_time = (end_time - start_time) / 60
-            st.markdown("Time to retrieve response %.2f minutes" % total_time)
+            time_interval = f'Time to retrieve response %.2f minutes'% total_time
+            st.markdown(time_interval)
             source_docs = response['source_documents']
-            for i, doc in enumerate(source_docs):
-                st.markdown(f'\nSource Document {i + 1}\n')
-                st.markdown(f'Source Text: {doc.page_content}')
+            source_docs_1_number = "Source Document 1"
+            source_docs_2_number = "Source Document 2"
+            source_docs_3_number = "Source Document 3"
+            source_docs_1_doc = f'Source Text: {source_docs[0].page_content}'
+            source_docs_2_doc = f'Source Text: {source_docs[1].page_content}'
+            source_docs_3_doc = f'Source Text: {source_docs[2].page_content}'
+            st.markdown(source_docs_1_number)
+            st.markdown(source_docs_1_doc)
+            st.markdown(source_docs_2_number)
+            st.markdown(source_docs_2_doc)
+            st.markdown(source_docs_3_number)
+            st.markdown(source_docs_3_doc)
+            space_row0 = """
+            #**************************************************************************#
+            
+            """
+            space_row1 = "source document:"
+            space_row2 = """
+            #**************************************#source document 1#************************************#
+            
+            """
+            space_row3 = """
+            #**************************************#source document 2#************************************#
+
+            """
+            space_row4 = """
+            #**************************************#source document 3#************************************#
+
+            """
+            space_row5 = """
+            #**************************************#time interval#************************************#
+
+            """
+            placeholder = st.empty()
+            full_response = ''
+            # for item in response:
+            full_response += response["result"] + space_row0 + space_row1 + space_row2 + source_docs_1_doc + space_row3 + source_docs_2_doc + space_row4 + source_docs_3_doc + space_row5 + time_interval
+            #     placeholder.markdown(full_response)
+            # placeholder.markdown(full_response)
+            message = {"role": "assistant", "content": full_response}
+            st.session_state.messages.append(message)
+
+            # for i, doc in enumerate(source_docs):
+            #     st.markdown(f'\nSource Document {i + 1}\n')
+            #     st.markdown(f'Source Text: {doc.page_content}')
+
+
     def clear_chat_history():
         st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
 
