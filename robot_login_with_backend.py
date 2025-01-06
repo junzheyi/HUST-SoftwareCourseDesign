@@ -233,28 +233,28 @@ def main_page():
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.write(prompt)
-    if st.button("Ask LawBot", type="primary"):
-        if prompt:
-            st.write(prompt)
-            start_time = timeit.default_timer()  # Start timer
-            with st.spinner("LawBot is searching.."):
-                if select_option == 'Local Llama2 - Run locally free but slower!':
-                    response = ask_question(prompt)
-                elif select_option == 'OpenAI - Faster and efficient - NOT free!':
-                    response = ask_question_openai(prompt)
-                elif select_option == 'HuggingFaceHub - zephyr-7b-beta':
-                    response = ask_question_zephyr(prompt)
-                else:
-                    response = ask_question(prompt)
-            with st.chat_message("assistant"):
-                st.markdown(response["result"])
-                end_time = timeit.default_timer()  # End timer
-                total_time = (end_time - start_time) / 60
-                st.markdown("Time to retrieve response %.2f minutes" % total_time)
-            source_docs = response['source_documents']
-            for i, doc in enumerate(source_docs):
-                st.info(f'\nSource Document {i + 1}\n')
-                st.info(f'Source Text: {doc.page_content}')
+    # if st.button("Ask LawBot", type="primary"):
+    if prompt:
+        # st.write(prompt)
+        start_time = timeit.default_timer()  # Start timer
+        with st.spinner("LawBot is searching.."):
+            if select_option == 'Local Llama2 - Run locally free but slower!':
+                response = ask_question(prompt)
+            elif select_option == 'OpenAI - Faster and efficient - NOT free!':
+                response = ask_question_openai(prompt)
+            elif select_option == 'HuggingFaceHub - zephyr-7b-beta':
+                response = ask_question_zephyr(prompt)
+            else:
+                response = ask_question(prompt)
+        with st.chat_message("assistant"):
+            st.markdown(response["result"])
+            end_time = timeit.default_timer()  # End timer
+            total_time = (end_time - start_time) / 60
+            st.markdown("Time to retrieve response %.2f minutes" % total_time)
+        source_docs = response['source_documents']
+        for i, doc in enumerate(source_docs):
+            st.info(f'\nSource Document {i + 1}\n')
+            st.info(f'Source Text: {doc.page_content}')
     def clear_chat_history():
         st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
 
