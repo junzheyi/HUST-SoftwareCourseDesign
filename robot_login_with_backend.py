@@ -207,8 +207,8 @@ def main():
             register()
 
 def main_page():
-    st.set_page_config(page_title="Junzhe Yi!", page_icon=":books:")
-    st.header("husteic-LawBot :books:")
+    # st.set_page_config(page_title="Junzhe Yi!", page_icon=":books:")
+    # st.header("husteic-LawBot :books:")
     select_option = st.selectbox(
         r'$\textsf{\large What is the preferred LLM?}$',
         ('Local Llama2 - Run locally free but slower!', 'OpenAI - Faster and efficient - NOT free!',
@@ -217,20 +217,24 @@ def main_page():
         index=None,
         placeholder="Select your LLM..."
     )
-    user_question = st.text_area(r"$\textsf{\large Ask LawBot a question:}$")
+    # prompt = st.text_area(r"$\textsf{\large Ask LawBot a question:}$")
+    if prompt := st.chat_input("please type your question here..."):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.write(prompt)
     if st.button("Ask LawBot", type="primary"):
-        if user_question:
-            st.write(user_question)
+        if prompt:
+            st.write(prompt)
             start_time = timeit.default_timer()  # Start timer
             with st.spinner("LawBot is searching.."):
                 if select_option == 'Local Llama2 - Run locally free but slower!':
-                    response = ask_question(user_question)
+                    response = ask_question(prompt)
                 elif select_option == 'OpenAI - Faster and efficient - NOT free!':
-                    response = ask_question_openai(user_question)
+                    response = ask_question_openai(prompt)
                 elif select_option == 'HuggingFaceHub - zephyr-7b-beta':
-                    response = ask_question_zephyr(user_question)
+                    response = ask_question_zephyr(prompt)
                 else:
-                    response = ask_question(user_question)
+                    response = ask_question(prompt)
             with st.chat_message("assistant"):
                 st.markdown(response["result"])
                 end_time = timeit.default_timer()  # End timer
@@ -279,20 +283,20 @@ def main():
     #     index=None,
     #     placeholder="Select your LLM..."
     # )
-    # user_question = st.text_area(r"$\textsf{\large Ask LawBot a question:}$")
+    # prompt = st.text_area(r"$\textsf{\large Ask LawBot a question:}$")
     # if st.button("Ask LawBot", type="primary"):
-    #     if user_question:
-    #         st.write(user_question)
+    #     if prompt:
+    #         st.write(prompt)
     #         start_time = timeit.default_timer()  # Start timer
     #         with st.spinner("LawBot is searching.."):
     #             if select_option == 'Local Llama2 - Run locally free but slower!':
-    #                 response = ask_question(user_question)
+    #                 response = ask_question(prompt)
     #             elif select_option == 'OpenAI - Faster and efficient - NOT free!':
-    #                 response = ask_question_openai(user_question)
+    #                 response = ask_question_openai(prompt)
     #             elif select_option == 'HuggingFaceHub - zephyr-7b-beta':
-    #                 response = ask_question_zephyr(user_question)
+    #                 response = ask_question_zephyr(prompt)
     #             else:
-    #                 response = ask_question(user_question)
+    #                 response = ask_question(prompt)
     #         with st.chat_message("assistant"):
     #             st.markdown(response["result"])
     #             end_time = timeit.default_timer()  # End timer
