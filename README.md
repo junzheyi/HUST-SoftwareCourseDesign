@@ -18,7 +18,8 @@ AI智能客服机器人系统设计与开发
 中期报告所计划的是做一个法律咨询客服机器人，但是在之后我发现milvus对中文的索引效果很不好，甚至可以说是很差
 所以整个项目只做到支持英文，最后做的是关于森海塞尔无线耳机的专业售后问答机器人，RAG效果非常好
 机器人支持三种LLM，分别是本地LLM（我用的是LLama2），OpenAI（没有提供key），hf的在线大模型（在config中我隐藏了我的api key）
-成果展示
+本地LLM返回结果需要3-4min，OpenAI没有试过，hf的zephyr需要0.2min左右。
+### 成果展示
 ![show.png](images%2Fshow.png)
 ![show2.png](images%2Fshow2.png)
 
