@@ -237,7 +237,7 @@ def main_page():
     # if prompt:
         # st.write(prompt)
         start_time = timeit.default_timer()  # Start timer
-        with st.spinner("LawBot is searching.."):
+        with st.spinner("I am searching.."):
             if select_option == 'Local Llama2 - Run locally free but slower!':
                 response = ask_question(prompt)
             elif select_option == 'OpenAI - Faster and efficient - NOT free!':
