@@ -13,8 +13,8 @@ if __name__ == '__main__':
                 You have to pass at least one parameter. Three parameters can be passed.
                 They are filename with path, book name and author. 
                 If you don't know the book name and author please pass it as "Unknown"
-                Example: python load_python_books.py "C:\\xyz.docx" "My Book" "My Author" 
-                         python load_python_books.py "C:\\xyz.docx" "Unknown" "Unknown"
+                Example: python load_docs.py "C:\\xyz.docx" "My Book" "junzheyi" 
+                         python load_docs.py "C:\\xyz.docx" "Unknown" "yijunzhe"
                 """
     # At least one parameter is required.
     if len(sys.argv[1:]) == 0:
