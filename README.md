@@ -29,7 +29,7 @@ AI智能客服机器人系统设计与开发
   <MilvusException: (code=2, message=Fail connecting to server on localhost:19530. Timeout)>
   ```
 
-  很明显，这是第一步没有做好，请返回:one:。
+  很明显，这是第一步没有做好，请返回 :one:。
 
 * 运行成功并打印调试信息：
 
