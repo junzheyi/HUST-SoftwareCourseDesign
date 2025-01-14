@@ -5,7 +5,7 @@
 AI智能客服机器人系统设计与开发
 # 森海塞尔耳机售后机器人——使用说明书
 
-源码链接:point_down:
+源码链接 :point_down:
 
 <https://github.com/junzheyi/HUST-SoftwareCourseDesign>
 
